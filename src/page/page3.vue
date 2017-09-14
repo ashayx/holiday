@@ -1,7 +1,7 @@
 <template>
     <div class="page3">
        
-        <h1>Example</h1>
+        <h1>page3</h1>
 
 
     </div>

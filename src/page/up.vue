@@ -7,7 +7,7 @@
                 </div>
                 <div class="weui-cell__bd">
                     <div class="image-upload-container">
-                        <span class="image-container" v-for="(src,index) in baseSrc">
+                        <span class="image-container" v-for="(src,index) in baseSrc" :key="src">
                             <img :src="src" v-show="src" class="images" @click="preview(index)">
                             <i @click="delImg(index)">-</i>
                         </span>
@@ -21,7 +21,7 @@
         <!-- 大图预览 -->
         <div class="swiper-container" v-show="previewShow">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="img in baseSrc" @click="previewShow = false">
+                <div class="swiper-slide" v-for="img in baseSrc" :key='img' @click="previewShow = false">
                     <img :data-src="img" class="swiper-lazy">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
@@ -33,8 +33,10 @@
 </template>
 
 <script>
-import weui from '@/js/weui'
-import lrz from '@/js/lrz.bundle'
+import weui from 'weui.js'
+import lrz from 'lrz'
+console.log(weui)
+console.log(lrz)
 
 export default {
     data() {
@@ -59,23 +61,27 @@ export default {
                     preloadImages: false,
                     lazyLoading: true,
                     zoom: true,
-                    zoomToggle: false
+                    zoomToggle: false,
+                    effect: 'cube',
                 });
+                console.log(swiper)
             }, 300)
+            
         },
         delImg(index) {
             this.baseSrc.splice(index, 1)
             this.imgUrls.splice(index, 1)
         },
         imgUpload(e) {
+            console.log(e.target.files)
             var _this = this
             _this.imgCount++;
-            if (_this.imgCount > 9) {
-                weui.alert('只能上传9张图片哦！')
+            if (_this.imgCount > 2) {
+                weui.alert('只能上传2张图片哦！')
                 return
             }
             if (e.target.files[0]) {
-                var loading = weui.loading('图片上传中...')
+                // var loading = weui.loading('图片上传中...')
             } else {
                 return
             }
@@ -87,7 +93,7 @@ export default {
                 .then(function(rst) {
                     // 处理成功会执行
                     _this.baseSrc.push(rst.base64);
-                    $.post('/api/1/picture?method=upload', {
+                    $.post('/', {
                         content: rst.base64,
                         encode: 'base64'
                     }, function(response) {
@@ -110,4 +116,107 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.image-upload-container {
+    flex: 1;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.image-upload-container .image-container {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 5px;
+}
+
+.image-upload-container .image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-upload-container .image-container i {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: red;
+    top: -0.3rem;
+    right: -0.2rem;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.image-upload-container .add-btn-container {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 40px;
+    color: #a7a7a7;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 100;
+    text-align: center;
+    vertical-align: top;
+    background: url("../assets/add-btn.png") center no-repeat;
+    background-size: contain;
+}
+
+.image-upload-container .add-btn-container #file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45px;
+    height: 45px;
+    opacity: 0;
+    z-index: 10;
+}
+
+.swiper-container {
+    background: #000;
+    position: fixed;
+    z-index: 1000;
+    background-color: #000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.swiper-container .swiper-slide {
+    text-align: center;
+    background: #000;
+}
+
+.swiper-container .swiper-slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.swiper-container p {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 0.6rem;
+    z-index: 1001;
+}
+
+
+
+/*# sourceMappingURL=index.css.map */
+</style>
 

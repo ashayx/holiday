@@ -5,16 +5,19 @@ import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
-import './js/jquery.min'
+// import './js/jquery.min'
+import './js/zepto'
 import './js/config'
+
 
 import './css/style.css'
 import './css/loading.css'
 import './css/swiper.min.css'
 import './css/animate .css'
 
+
 import './css/weui.css'
-import './css/flex.css'
+// import './css/flex.css'
 
 Vue.config.productionTip = false
 

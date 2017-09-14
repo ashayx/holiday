@@ -1,29 +1,43 @@
 <template>
     <swiper :options="swiperOption" class="swiper-box" ref="mySwiper">
+        <!-- page1 -->
         <swiper-slide class="swiper-item">
             <page1></page1>
         </swiper-slide>
+        <!-- page2 -->
         <swiper-slide class="swiper-item">
             <page2></page2>
         </swiper-slide>
+        <!-- page3 -->
         <swiper-slide class="swiper-item">
             <page3></page3>
         </swiper-slide>
+        <!-- page4 -->
         <swiper-slide class="swiper-item">
-            <h1 class="animated infinite bounce">Example</h1>
+            <page4></page4>
         </swiper-slide>
-        <swiper-slide class="swiper-item">Slide 5</swiper-slide>
-        <swiper-slide class="swiper-item">Slide 6</swiper-slide>
-        <swiper-slide class="swiper-item">Slide 7</swiper-slide>
+        <!-- page5 -->
+        <swiper-slide class="swiper-item">
+            <page5></page5>
+        </swiper-slide>
+        <!-- page6 -->
+        <swiper-slide class="swiper-item">
+            <page6></page6>
+        </swiper-slide>
+        <!-- page7 -->
+        <swiper-slide class="swiper-item">
+            <page7></page7>
+        </swiper-slide>
         
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-pagination swiper-pagination-main" slot="pagination"></div>
     </swiper>
 
 </template>
 
 
 <script>
-import page1 from '@/page/page1'
+import page1 from '@/page/video'
+// import page1 from '@/page/page1'
 import page2 from '@/page/page2'
 import page3 from '@/page/page3'
 import page4 from '@/page/page4'
@@ -36,13 +50,13 @@ export default {
     data() {
         return {
             swiperOption: {
-                pagination: '.swiper-pagination',
+                pagination: '.swiper-pagination-main',
                 direction: 'vertical',
                 slidesPerView: 1,
                 paginationClickable: true,
                 spaceBetween: 0,
                 mousewheelControl: true,
-                // effect: 'fade',
+                effect: 'fade',
                 onSlideChangeEnd: function(swiper) {
                     if( swiper.activeIndex === 1 ) {
                         $('.page2').css('display', 'block')
@@ -67,9 +81,8 @@ export default {
         }
     },
     mounted() {
-        // you can use current swiper instance object to do something(swiper methods)
         // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-        console.log( this.swiper.activeIndex)
+        // console.log( this.swiper.activeIndex)
         // this.swiper.slideTo(3, 1000, false)
     },
     methods: {

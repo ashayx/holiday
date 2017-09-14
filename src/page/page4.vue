@@ -1,6 +1,8 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
+        
+    <h1 class="animated infinite bounce">page4</h1>
+
 
     </div>
 </template>
