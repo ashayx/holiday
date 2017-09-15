@@ -12,7 +12,10 @@
         <!-- S 主体内容 -->
         <div id="o2_main" class="main">
             <div class="wrapper">
+                
                 <video id="video" class="video" preload="auto" playsinline src="http://wqs.jd.com/promote/superfestival/superfestival.mp4" width="1" height="1" type="video/mp4"></video>
+                <!-- <video id="video" class="video" preload="auto" playsinline src="http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4" width="1" height="1" type="video/mp4"></video> -->
+
             </div>
             <div class="btns control">
                 <a class="btn continue">继续</a>
@@ -186,9 +189,9 @@ export default {
         /**
          * event bind
          */
-        $('body').on('touchstart', function(e) {
-            e.preventDefault()
-        })
+        // $('body').on('touchstart', function(e) {
+        //     e.preventDefault()
+        // })
 
         $('.begin').on('touchstart', function() {
             $('.loading').hide()

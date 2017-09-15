@@ -36,6 +36,7 @@
 import weui from 'weui.js'
 import lrz from 'lrz'
 import '../js/zepto'
+
 export default {
     data() {
         return {
@@ -48,7 +49,7 @@ export default {
     },
     methods: {
         alet() {
-            alert('sssssss')
+            // alert('sssssss')
         },
         preview(imgIndex) {
             this.previewShow = true
@@ -62,7 +63,7 @@ export default {
                     lazyLoading: true,
                     zoom: true,
                     zoomToggle: false,
-                    effect: 'cube',
+                    effect: 'coverflow',
                     loop: true,
                     autoplay: 2500,
                     // observeParents: true,
@@ -75,7 +76,7 @@ export default {
             this.imgUrls.splice(index, 1)
         },
         imgUpload(e) {
-            console.log(e.target.files)
+            console.log(e)
             var _this = this
             _this.imgCount++;
             if (_this.imgCount > 4) {
@@ -91,14 +92,16 @@ export default {
                 width: 500,
                 height: 500,
                 quality: 0.7
-            })
-                .then(function(rst) {
+            }).then(function(rst) {
                     // 处理成功会执行
-                    _this.baseSrc.push(rst.base64);
+                    _this.baseSrc.push(rst.base64)
+                    console.log(rst)
                     $.post('/', {
                         content: rst.base64,
-                        encode: 'base64'
+                        encode: 'base64',
+                        serverId: 8888 
                     }, function(response) {
+                        console.log(response)
                         var response = JSON.parse(response)
                         if (response.errcode == 0) {
                             _this.imgUrls.push(response.data.img_path);

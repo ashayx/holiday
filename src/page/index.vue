@@ -2,11 +2,12 @@
     <swiper :options="swiperOption" class="swiper-box" ref="mySwiper">
         <!-- page1 -->
         <swiper-slide class="swiper-item">
-            <page1></page1>
+            <page6></page6>
         </swiper-slide>
         <!-- page2 -->
         <swiper-slide class="swiper-item">
-            <page2></page2>
+            <!-- <page2></page2> -->
+            <page1></page1>
         </swiper-slide>
         <!-- page3 -->
         <swiper-slide class="swiper-item">
@@ -22,7 +23,7 @@
         </swiper-slide>
         <!-- page6 -->
         <swiper-slide class="swiper-item">
-            <page6></page6>
+            <!-- <page6></page6> -->
         </swiper-slide>
         <!-- page7 -->
         <swiper-slide class="swiper-item">
