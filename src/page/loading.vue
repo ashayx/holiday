@@ -13,6 +13,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'loading',
     data() {
@@ -21,19 +22,27 @@ export default {
         }
     },
     created() {
-        this.loading()
+        // this.loading()
     },
     methods: {
         loading() {
             let that = this
-            window.onload = function() {
-                console.log('全部加载完毕')
+           
+            setTimeout(function() {
                 that.$router.push('index')
-            }
-            // setTimeout(function() {
-            //     that.$router.push('index')
-            // }, 3000)
+            }, 3000)
         }
+    },
+     mounted: function() {
+         let that = this
+
+         setTimeout(function() {
+             that.$router.push('index')
+         }, 3000)
+        //  window.onload = function() {
+        //      console.log('全部加载完毕')
+        //      that.$router.push('index')
+        //  }
     }
 }
 </script>

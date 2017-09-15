@@ -23,7 +23,7 @@
         </swiper-slide>
         <!-- page6 -->
         <swiper-slide class="swiper-item">
-            <!-- <page6></page6> -->
+            <page6></page6>
         </swiper-slide>
         <!-- page7 -->
         <swiper-slide class="swiper-item">
@@ -64,7 +64,7 @@ export default {
                         $('.page2').addClass('animated  zoomInLeft')
                         // console.log('添加第二页动画')
                     }else if( swiper.activeIndex === 2 ) {
-                        console.log('3')
+                       
                         $('.page3').css('display', 'block')
                         $('.page3 > h1').addClass('animated  zoomInLeft')
                     }
@@ -74,7 +74,7 @@ export default {
     },
     created() {
         this.initDisplay()
-        console.log('创建')
+        // console.log('创建')
     },
     computed: {
         swiper() {

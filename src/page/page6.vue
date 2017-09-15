@@ -33,9 +33,9 @@
 </template>
 
 <script>
+import '@/js/zepto'
 import weui from 'weui.js'
 import lrz from 'lrz'
-import '../js/zepto'
 
 export default {
     data() {
@@ -65,7 +65,7 @@ export default {
                     zoomToggle: false,
                     effect: 'coverflow',
                     loop: true,
-                    autoplay: 2500,
+                    autoplay: 1500,
                     // observeParents: true,
                     // observer: true
                 })
@@ -76,7 +76,7 @@ export default {
             this.imgUrls.splice(index, 1)
         },
         imgUpload(e) {
-            console.log(e)
+            // console.log(e)
             var _this = this
             _this.imgCount++;
             if (_this.imgCount > 4) {
@@ -84,7 +84,7 @@ export default {
                 return
             }
             if (e.target.files[0]) {
-                // var loading = weui.loading('图片上传中...')
+                var loading = weui.loading('图片上传中...')
             } else {
                 return
             }
@@ -95,20 +95,20 @@ export default {
             }).then(function(rst) {
                     // 处理成功会执行
                     _this.baseSrc.push(rst.base64)
-                    console.log(rst)
-                    $.post('/', {
-                        content: rst.base64,
-                        encode: 'base64',
-                        serverId: 8888 
+                    // console.log(rst)
+
+                    $.post('http://h5.sjzzimu.com/weixinUpload/uploadImage.action', {
+                        base: rst.base64,
+                        // encode: 'base64',
                     }, function(response) {
                         console.log(response)
-                        var response = JSON.parse(response)
-                        if (response.errcode == 0) {
-                            _this.imgUrls.push(response.data.img_path);
+                        // var response = JSON.parse(response)
+                        // if (response.errcode == 0) {
+                        //     _this.imgUrls.push(response.data.img_path);
                             loading.hide()
-                        } else {
-                            weui.alert('图片传输失败，请重试')
-                        }
+                        // } else {
+                        //     weui.alert('图片传输失败，请重试')
+                        // }
                     })
                 })
                 .catch(function(err) {

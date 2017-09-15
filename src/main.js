@@ -6,7 +6,7 @@ import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 // import './js/jquery.min'
-import './js/zepto'
+// import './js/zepto'
 import './js/config'
 
 

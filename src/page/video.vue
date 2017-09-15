@@ -48,8 +48,8 @@ import makeVideoPlayableInline from 'iphone-inline-video'
 export default {
     mounted () {
         var $tip = $('.tip')
-        console.log($)
-        console.log($tip)
+        // console.log($)
+        // console.log($tip)
         /**
          * 判断微信里 TBS 的版本
          */
@@ -98,9 +98,9 @@ export default {
          */
         var video = {}
         video.el = document.getElementById('video')
-        console.log(video.el)
+        // console.log(video.el)
         video.$el = $(video.el)
-        console.log(video.$el)
+        // console.log(video.$el)
         video.$main = $('.main')
         video.$wrapper = $('.main .wrapper')
         video.$poster = $('.main .poster')
@@ -124,7 +124,7 @@ export default {
                 video.show()
             }
         }
-        console.log(video.el)
+        // console.log(video.el)
         video.el.addEventListener('timeupdate', function(e) {
             if (video.el.currentTime > 3) {
                 video.$skipBtn.show()
