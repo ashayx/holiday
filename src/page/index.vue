@@ -1,44 +1,42 @@
 <template>
-    <swiper :options="swiperOption" class="swiper-box" ref="mySwiper">
-        <!-- page1 -->
-        <swiper-slide class="swiper-item">
-            <page6></page6>
-        </swiper-slide>
-        <!-- page2 -->
-        <swiper-slide class="swiper-item">
-            <!-- <page2></page2> -->
-            <page1></page1>
-        </swiper-slide>
-        <!-- page3 -->
-        <swiper-slide class="swiper-item">
-            <page3></page3>
-        </swiper-slide>
-        <!-- page4 -->
-        <swiper-slide class="swiper-item">
-            <page4></page4>
-        </swiper-slide>
-        <!-- page5 -->
-        <swiper-slide class="swiper-item">
-            <page5></page5>
-        </swiper-slide>
-        <!-- page6 -->
-        <swiper-slide class="swiper-item">
-            <page6></page6>
-        </swiper-slide>
-        <!-- page7 -->
-        <swiper-slide class="swiper-item">
-            <page7></page7>
-        </swiper-slide>
-        
-        <div class="swiper-pagination swiper-pagination-main" slot="pagination"></div>
-    </swiper>
-
+        <swiper :options="swiperOption" class="swiper-box" ref="mySwiper" >
+            <!-- page1 -->
+            <swiper-slide class="swiper-item">
+                <page1></page1>
+            </swiper-slide>
+            <!-- page2 -->
+            <swiper-slide class="swiper-item">
+                <page2></page2>
+            </swiper-slide>
+            <!-- page3 -->
+            <swiper-slide class="swiper-item">
+                <page3></page3>
+            </swiper-slide>
+            <!-- page4 -->
+            <swiper-slide class="swiper-item">
+                <page4></page4>
+            </swiper-slide>
+            <!-- page5 -->
+            <swiper-slide class="swiper-item">
+                <page5></page5>
+            </swiper-slide>
+            <!-- page6 -->
+            <swiper-slide class="swiper-item">
+                <page6></page6>
+            </swiper-slide>
+            <!-- page7 -->
+            <!-- <swiper-slide class="swiper-item">
+                <page7></page7>
+            </swiper-slide> -->
+            
+            <div class="swiper-pagination swiper-pagination-main" slot="pagination"></div>
+        </swiper>
 </template>
 
 
 <script>
-import page1 from '@/page/video'
-// import page1 from '@/page/page1'
+// import page1 from '@/page/video'
+import page1 from '@/page/page1'
 import page2 from '@/page/page2'
 import page3 from '@/page/page3'
 import page4 from '@/page/page4'
@@ -59,14 +57,26 @@ export default {
                 mousewheelControl: true,
                 effect: 'fade',
                 onSlideChangeEnd: function(swiper) {
-                    if( swiper.activeIndex === 1 ) {
-                        $('.page2').css('display', 'block')
-                        $('.page2').addClass('animated  zoomInLeft')
-                        // console.log('添加第二页动画')
-                    }else if( swiper.activeIndex === 2 ) {
-                       
-                        $('.page3').css('display', 'block')
-                        $('.page3 > h1').addClass('animated  zoomInLeft')
+                    switch (swiper.activeIndex) {
+                        case 1:
+                            //第二页动画
+                            $('.page2').css('display', 'block')
+                            $('.page2').addClass('animated  fadeIn')
+                            $('.p2-words-1').addClass('animated  jackInTheBox')
+                            $('.p2-words-2').addClass('animated  fadeInUp')
+                            break;
+                        case 2:
+                            //第三页动画
+                            $('.page3').css('display', 'block')
+                            $('.page3').addClass('animated  fadeIn')
+                            $('.p3-word').addClass('animated  jackInTheBox')
+                            $('.yy').css('animation','lineMove 2s ease-out  infinite')
+                            break;
+                        case 3:
+                            //第四页动画
+                            $('.page4').css('display', 'block')
+                            $('.page4').addClass('animated  jackInTheBox')
+                            break;
                     }
                 } 
             }
@@ -84,7 +94,12 @@ export default {
     mounted() {
         // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
         // console.log( this.swiper.activeIndex)
-        // this.swiper.slideTo(3, 1000, false)
+       let _this = this
+        
+        $('.page5-close').on('touchstart', function() {
+            _this.swiper.slideTo(5, 1000, false)
+        })
+       
     },
     methods: {
         initDisplay() {
@@ -146,4 +161,21 @@ body {
     -webkit-align-items: center;
     align-items: center;
 }
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.loader {
+    width: 60%;
+    height: 10rem;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+}
+
 </style>

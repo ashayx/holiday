@@ -1,46 +1,303 @@
 <template>
-    <div class="hello">
-        <img src="
-    data:image/jpeg;base64,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"
- alt="" @click="go">
+    <div class="page1">
+        <div class="star">
+            <div class="star1" @click="getVideoUrl"></div>
+            <div class="star2" @click="getVideoUrl"></div>
+        </div>
+
+        <section style="visibility:hidden">
+
+            <!-- S loading 动画，对应的样式在 src/css/loading.scss -->
+            <div id="o2_loading" class="loading">
+                <div class="btns">
+                    <a class="btn begin">播放</a>
+                </div>
+            </div>
+            <!-- E loading -->
+
+            <!-- S 主体内容 -->
+            <div id="o2_main" class="main">
+                <div class="wrapper">
+
+                    <video id="video" class="video" preload="auto" playsinline :src="playVideo" width="1" height="1" type="video/mp4"></video>
+
+                </div>
+                <div class="btns control">
+                    <a class="btn continue">继续</a>
+                    <a class="btn skip">跳过</a>
+                </div>
+                <div class="poster"></div>
+            </div>
+            <!-- E 主体内容 -->
+
+            <!-- S KV 页 -->
+            <div id="o2_end" class="end hide">
+                <div class="btns">
+                    <a class="btn replay">再看一次</a>
+                    <a class="btn exit">返回</a>
+                </div>
+            </div>
+            <!-- E KV 页 -->
+
+            <!-- <div class="tip"></div> -->
+        </section>
 
     </div>
 </template>
-
 <script>
+import '@/css/package.css'
+import '@/js/zepto'
+import '@/js/detect'
+import '@/js/fx'
+import '@/js/fx_methods'
+import makeVideoPlayableInline from 'iphone-inline-video'
+
 export default {
-    name: 'hello',
     data() {
         return {
-            msg: 'page7'
+            playVideo: 'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+            videoUrl: [
+                'http://wqs.jd.com/promote/superfestival/superfestival.mp4',
+                'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+            ]
         }
     },
     methods: {
-        go() {
-            alert('go')
+        getVideoUrl() {
+            let len = this.videoUrl.length
+            let key = Math.floor(Math.random() * len)
+            console.log(key)
+            this.playVideo = this.videoUrl[key]
+            $('section').css('visibility', 'visible')
         }
+    },
+    mounted() {
+        var $tip = $('.tip')
+        // console.log($)
+        // console.log($tip)
+        /**
+         * 判断微信里 TBS 的版本
+         */
+        var ua = window.navigator.userAgent
+        var TBS = ua.match(/TBS\/([\d.]+)/)
+        var TBS_V0 = '036849' // TBS >=036849 支持 x5-video-player-type
+        var TBS_V1 = '036900' // TBS >=036900 正确支持 x5videoenterfullscreen，036849 <= TBS < 036900 支持的 x5videoxxxx 事件是反的
+
+        var QQB = ua.match(/MQQBrowser\/([\d.]+)/)
+        var QQB_V0 = '7.1' // MQQBrowser >=7.1 支持 x5-video-player-type
+        var QQB_V1 = '7.2' // MQQBrowser >=7.2 正确支持 x5videoenterfullscreen，7.1 <= TBS < 7.2 支持的 x5videoxxxx 事件是反的
+
+        var tbs = {}
+        if (TBS) {
+            tbs.isTBS = true
+            tbs.isRightEvent = TBS[1] >= TBS_V1
+            if (TBS[1] >= TBS_V0) {
+                useH5Play()
+            }
+        } else if (QQB) {
+            tbs.isTBS = true
+            tbs.isRightEvent = QQB[1] >= QQB_V1
+            if (QQB[1] >= QQB_V0) {
+                useH5Play()
+            }
+        }
+
+        if (TBS) {
+            $tip.append('TBS: ' + TBS[0] + ' | ' + TBS[1] + '<br>')
+        } else {
+            $tip.append('TBS: ' + TBS + '<br>')
+        }
+        if (QQB) {
+            $tip.append('MQQBrowser: ' + QQB[0] + ' | ' + QQB[1] + '<br>')
+        } else {
+            $tip.append('MQQBrowser: ' + QQB + '<br>')
+        }
+
+        function useH5Play() {
+            $('#video').attr('x5-video-player-type', 'h5')
+            $('#video').attr('x5-video-player-fullscreen', 'true')
+        }
+
+        /**
+         * video
+         */
+        var video = {}
+        video.el = document.getElementById('video')
+        // console.log(video.el)
+        video.$el = $(video.el)
+        // console.log(video.$el)
+        video.$main = $('.main')
+        video.$wrapper = $('.main .wrapper')
+        video.$poster = $('.main .poster')
+        video.$skipBtn = $('.main .skip')
+        video.$continueBtn = $('.main .continue')
+        video.isCanPlay = false
+        video.isFirst = true
+        video.show = function() {
+            video.isFirst = false
+
+            video.$el.addClass('show')
+            video.$main.show()
+            video.$el.fadeIn()
+            video.$poster.fadeOut()
+        }
+        video.start = function() {
+            video.$poster.show()
+            video.el.play()
+
+            if (video.isCanPlay) {
+                video.show()
+            }
+        }
+        // console.log(video.el)
+        video.el.addEventListener('timeupdate', function(e) {
+            if (video.el.currentTime > 3) {
+                video.$skipBtn.show()
+            }
+
+            if (video.isFirst) {
+                video.show()
+            }
+            video.isCanPlay = true
+        })
+
+        video.el.addEventListener('ended', function(e) {
+            video.$main.fadeOut()
+            end.enter()
+        })
+
+        // 处理 iOS 的兼容性
+        if ($.os.ios) {
+            makeVideoPlayableInline(video.el)
+        }
+
+        // 处理 tbs/QQBrowser 的兼容性
+        if (tbs.isTBS) {
+            video.el.addEventListener("x5videoenterfullscreen", function() {
+                $tip.append("x5video enter fullscreen<br>");
+
+                if (tbs.isRightEvent) {
+                    video.$skipBtn.hide()
+                    video.$continueBtn.hide()
+                } else {
+                    video.$skipBtn.show()
+                    video.$continueBtn.show()
+                }
+            })
+
+            video.el.addEventListener("x5videoexitfullscreen", function() {
+                $tip.append("x5video exit fullscreen<br>");
+
+                if (tbs.isRightEvent) {
+                    video.$skipBtn.show()
+                    video.$continueBtn.show()
+                } else {
+                    video.$skipBtn.hide()
+                    video.$continueBtn.hide()
+                }
+            })
+        }
+
+
+        /**
+         * end
+         */
+        var end = {}
+        end.$ = $('#o2_end')
+        end.enter = function() {
+            $('.end').removeClass('hide')
+        }
+        end.leave = function() {
+            $('.end').addClass('hide')
+        }
+
+        /**
+         * event bind
+         */
+        // $('body').on('touchstart', function(e) {
+        //     e.preventDefault()
+        // })
+
+        $('.begin').on('touchstart', function() {
+            $('.loading').hide()
+            $('.main').show()
+
+            video.start()
+        })
+
+        $('.skip').on('touchstart', function() {
+            end.enter()
+            video.el.pause()
+            video.el.currentTime = '0'
+
+            $('.main').hide()
+        })
+
+        $('.continue').on('touchstart', function() {
+            video.el.play()
+        })
+
+        $('.replay').on('touchstart', function() {
+            end.leave()
+            $('.main').show()
+
+            video.start()
+        })
+        $('.exit').on('touchstart', function() {
+            $('section').css('visibility', 'hidden')
+        })
+
+
+        // 计算 wrapper 的 margin-top 值，视频以宽度为基准居中播放
+        function handleResize() {
+            var sWidth = 9
+            var sHeight = 16
+            var width = window.innerWidth
+            var height = window.innerHeight
+
+            var marginTop = height - (width * sHeight) / sWidth
+            marginTop = Math.round(marginTop)
+            if (marginTop < -2) {
+                video.$wrapper.css('marginTop', marginTop / 2 + 'px')
+            } else {
+                video.$wrapper.css('marginTop', '0')
+            }
+        }
+        handleResize()
+        window.addEventListener('resize', function() {
+            handleResize()
+        })
+
     }
 }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
-h1,
-h2 {
-    font-weight: normal;
+.page1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.star1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background-color: #ddd;
+    /* z-index: 100; */
 }
 
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
+.star2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background-color: #ddd;
+    /* z-index: 100; */
 }
 </style>

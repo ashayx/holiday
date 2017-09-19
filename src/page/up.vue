@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" @click="alet">
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__hd">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <!-- 大图预览 -->
-        <div class="swiper-container" v-show="previewShow">
+        <div class="swiper-container photoShow" v-show="previewShow">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="img in baseSrc" :key='img' @click="previewShow = false">
                     <img :data-src="img" class="swiper-lazy">
@@ -33,10 +33,9 @@
 </template>
 
 <script>
+// import '@/js/zepto'
 import weui from 'weui.js'
 import lrz from 'lrz'
-console.log(weui)
-console.log(lrz)
 
 export default {
     data() {
@@ -44,44 +43,48 @@ export default {
             baseSrc: [],
             imgUrls: [],
             imgCount: 0,
-            previewShow: false
+            previewShow: false,
+
         }
     },
     methods: {
+        alet() {
+            // alert('sssssss')
+        },
         preview(imgIndex) {
-            this.previewShow = true;
-            let index = imgIndex;
+            this.previewShow = true
+            let index = imgIndex
             setTimeout(() => {
-                var swiper = new Swiper('.swiper-container', {
-                    pagination: '.swiper-pagination',
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
+                var photoShow = new Swiper('.photoShow', {
+                    pagination: '.swiper-pagination-white',
                     initialSlide: index,
                     paginationClickable: true,
                     preloadImages: false,
                     lazyLoading: true,
                     zoom: true,
                     zoomToggle: false,
-                    effect: 'cube',
-                });
-                console.log(swiper)
+                    effect: 'coverflow',
+                    loop: true,
+                    autoplay: 1500,
+                    // observeParents: true,
+                    // observer: true
+                })
             }, 300)
-            
         },
         delImg(index) {
             this.baseSrc.splice(index, 1)
             this.imgUrls.splice(index, 1)
         },
         imgUpload(e) {
-            console.log(e.target.files)
+            // console.log(e)
             var _this = this
             _this.imgCount++;
-            if (_this.imgCount > 2) {
-                weui.alert('只能上传2张图片哦！')
+            if (_this.imgCount > 4) {
+                weui.alert('只能上传4张图片哦！')
                 return
             }
             if (e.target.files[0]) {
-                // var loading = weui.loading('图片上传中...')
+                var loading = weui.loading('图片上传中...')
             } else {
                 return
             }
@@ -89,27 +92,29 @@ export default {
                 width: 500,
                 height: 500,
                 quality: 0.7
+            }).then(function(rst) {
+                // 处理成功会执行
+                _this.baseSrc.push(rst.base64)
+                // console.log(rst)
+
+                $.post('http://h5.sjzzimu.com/weixinUpload/uploadImage.action', {
+                    base: rst.base64,
+                    // encode: 'base64',
+                }, function(response) {
+                    console.log(response)
+                    // var response = JSON.parse(response)
+                    // if (response.errcode == 0) {
+                    //     _this.imgUrls.push(response.data.img_path);
+                    loading.hide()
+                    // } else {
+                    //     weui.alert('图片传输失败，请重试')
+                    // }
+                })
             })
-                .then(function(rst) {
-                    // 处理成功会执行
-                    _this.baseSrc.push(rst.base64);
-                    $.post('/', {
-                        content: rst.base64,
-                        encode: 'base64'
-                    }, function(response) {
-                        var response = JSON.parse(response)
-                        if (response.errcode == 0) {
-                            _this.imgUrls.push(response.data.img_path);
-                            loading.hide()
-                        } else {
-                            weui.alert('图片传输失败，请重试')
-                        }
-                    });
-                })
                 .catch(function(err) {
-                    console.log(err);
+                    console.log(err)
                 })
-                .always(function() { });
+                .always(function() { })
         },
     }
 }
@@ -177,10 +182,10 @@ export default {
 }
 
 .swiper-container {
-    background: #000;
-    position: fixed;
+    background: #fff;
+    position: absolute;
     z-index: 1000;
-    background-color: #000;
+    background-color: #fff;
     top: 0;
     right: 0;
     bottom: 0;
@@ -189,7 +194,7 @@ export default {
 
 .swiper-container .swiper-slide {
     text-align: center;
-    background: #000;
+    background: #fff;
 }
 
 .swiper-container .swiper-slide img {
@@ -213,7 +218,9 @@ export default {
     transform: translate(-50%);
     font-size: 0.6rem;
     z-index: 1001;
+    color: #fff;
 }
+
 
 
 

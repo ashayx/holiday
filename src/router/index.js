@@ -14,11 +14,11 @@ export default new Router({
       name: 'loading',
       component: loading
     },
-    {
-      path: '/video',
-      name: 'video',
-      component: video
-    },
+    // {
+    //   path: '/video',
+    //   name: 'video',
+    //   component: video
+    // },
     {
         path: '/index',
         name: 'index',

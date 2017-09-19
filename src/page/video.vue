@@ -1,39 +1,46 @@
 <template>
-    <div class="page1" >
-       
-        <!-- S loading 动画，对应的样式在 src/css/loading.scss -->
-        <div id="o2_loading" class="loading">
-            <div class="btns">
-                <a class="btn begin">开始播放视频</a>
-            </div>
+    <div class="page1">
+        <div class="star">
+            <div class="star1"  @click="getVideoUrl"></div>
+            <div class="star2"  @click="getVideoUrl"></div>
         </div>
-        <!-- E loading -->
 
-        <!-- S 主体内容 -->
-        <div id="o2_main" class="main">
-            <div class="wrapper">
-                
-                <video id="video" class="video" preload="auto" playsinline src="http://wqs.jd.com/promote/superfestival/superfestival.mp4" width="1" height="1" type="video/mp4"></video>
-                <!-- <video id="video" class="video" preload="auto" playsinline src="http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4" width="1" height="1" type="video/mp4"></video> -->
+        <section style="visibility:hidden">
 
+            <!-- S loading 动画，对应的样式在 src/css/loading.scss -->
+            <div id="o2_loading" class="loading">
+                <div class="btns">
+                    <a class="btn begin">播放</a>
+                </div>
             </div>
-            <div class="btns control">
-                <a class="btn continue">继续</a>
-                <a class="btn skip">跳过</a>
-            </div>
-            <div class="poster"></div>
-        </div>
-        <!-- E 主体内容 -->
+            <!-- E loading -->
 
-        <!-- S KV 页 -->
-        <div id="o2_end" class="end hide">
-            <div class="btns">
-                <a class="btn replay">再看一次</a>
-            </div>
-        </div>
-        <!-- E KV 页 -->
+            <!-- S 主体内容 -->
+            <div id="o2_main" class="main">
+                <div class="wrapper">
+                    
+                    <video id="video" class="video" preload="auto" playsinline :src="playVideo" width="1" height="1" type="video/mp4"></video>
 
-        <!-- <div class="tip"></div> -->
+                </div>
+                <div class="btns control">
+                    <a class="btn continue">继续</a>
+                    <a class="btn skip">跳过</a>
+                </div>
+                <div class="poster"></div>
+            </div>
+            <!-- E 主体内容 -->
+
+            <!-- S KV 页 -->
+            <div id="o2_end" class="end hide">
+                <div class="btns">
+                    <a class="btn replay">再看一次</a>
+                    <a class="btn exit">返回</a>
+                </div>
+            </div>
+            <!-- E KV 页 -->
+
+            <!-- <div class="tip"></div> -->
+        </section>
 
     </div>
 </template>
@@ -46,6 +53,24 @@ import '@/js/fx_methods'
 import makeVideoPlayableInline from 'iphone-inline-video'
 
 export default {
+    data() {
+        return {
+            playVideo: 'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+            videoUrl: [
+                'http://wqs.jd.com/promote/superfestival/superfestival.mp4',
+                'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+            ]
+        }
+    },
+    methods: {
+        getVideoUrl() {
+            let len = this.videoUrl.length
+            let key = Math.floor(Math.random() * len )
+            console.log(key)
+            this.playVideo = this.videoUrl[key]
+            $('section').css('visibility','visible')
+        }
+    },
     mounted () {
         var $tip = $('.tip')
         // console.log($)
@@ -218,6 +243,9 @@ export default {
 
             video.start()
         })
+        $('.exit').on('touchstart', function() {
+            $('section').css('visibility', 'hidden')
+        })
 
 
         // 计算 wrapper 的 margin-top 值，视频以宽度为基准居中播放
@@ -251,6 +279,24 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
+}
+.star1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:3rem;
+    height: 3rem;
+    background-color: #ddd;
+    /* z-index: 100; */
+}
+.star2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background-color: #ddd;
+    /* z-index: 100; */
 }
 
 </style>

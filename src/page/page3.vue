@@ -1,7 +1,7 @@
 <template>
-    <div class="page1">
+    <div class="page3">
 
-        <div class="container">
+        <!-- <div class="container">
             <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="210" height="200" x="0px" y="0px" viewbox="0 0 100 100">
                 <path class="yy" fill-rule="evenodd" clip-rule="evenodd" fill="none" d="M43.4,0.2c1.4,1.5,0.9,4,0.2,5.8c2-0.5,3.3-0.7,4.1-2.4
                     c0.1,0.2,0.2,0.3,0.2,0.5c0.8,1.3-0.3,3.5,0.7,3.8c1.6,0.6,3.2,1.1,4.8,1.7c3.8-3.3,15.2-6,20.6-2.4c1.3,4.4,2.1,11.5,0.7,16.8
@@ -12,6 +12,9 @@
                     C1.9,24.5-3.1,10.1,2.4,6.7c4.8-4.3,16.8,0.9,19.9,2.9c2.1-0.6,4.2-1.3,6.2-1.9c1.5-0.8,2.7-2.6,4.6-3.4C37.7,2.5,41.6,4.7,43.4,0.2
                     z" />
             </svg>
+        </div> -->
+        <div class="p3-word">
+            <img src="../assets/p3/p3-word.png" alt="">
         </div>
 
     </div>
@@ -20,26 +23,39 @@
 <script>
 
 export default {
-    name: 'page1',
+    name: 'page3',
     data() {
         return {
-            msg: 'page1'
+            
         }
     },
     mounted() {
-        var obj = document.querySelector("path");
-        var length = obj.getTotalLength();
+        // var obj = document.querySelector("path");
+        // var length = obj.getTotalLength();
 
-        console.log(length); // 377.0433
+        // console.log(length); // 377.0433
     }
 }
 </script>
 
 <style scoped>
-.page1 {
+.page3 {
     width: 100%;
     height: 100%;
     position: relative;
+    display: none;
+    background: url(../assets/p3/p3-bg.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+img {
+    width: 100%;
+}
+.p3-word {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 80%;
+
 }
 
 .container {
@@ -48,13 +64,15 @@ export default {
 }
 
 .yy {
+    visibility: hidden;
     stroke-width: 1;
     stroke: #ff7700;
-    animation: lineMove 2s ease-out infinite;
+    /* animation: lineMove 2s ease-out ; */
 }
 
 @keyframes lineMove {
     0% {
+        visibility: visible;
         stroke-dasharray: 0, 378;
     }
     50% {
@@ -65,7 +83,7 @@ export default {
     100% {
         stroke-dasharray: 378, 378;
         fill: rgba(255, 119, 0, .5);
-        opacity: 0;
+        opacity: 0;        
     }
 }
 </style>

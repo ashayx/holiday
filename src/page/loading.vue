@@ -13,7 +13,8 @@
 </template>
 
 <script>
-
+import '../css/pace-theme-big-counter.css'
+import '../js/pace.min.js'
 export default {
     name: 'loading',
     data() {
@@ -22,27 +23,19 @@ export default {
         }
     },
     created() {
-        // this.loading()
+        this.loading()
     },
     methods: {
         loading() {
             let that = this
-           
-            setTimeout(function() {
+            $('.swiper-box').css('visibility', 'hidden')
+            Pace.on('done', function() {
+                Pace.stop()
+                // $('.swiper-box').css('visibility', 'visible')
+                console.log('加载完成')
                 that.$router.push('index')
-            }, 3000)
+            })
         }
-    },
-     mounted: function() {
-         let that = this
-
-         setTimeout(function() {
-             that.$router.push('index')
-         }, 3000)
-        //  window.onload = function() {
-        //      console.log('全部加载完毕')
-        //      that.$router.push('index')
-        //  }
     }
 }
 </script>
