@@ -1,7 +1,7 @@
 <template>
     <div class="page5">
         <!-- 上传 -->
-        <div v-show="imgUrls.length < 3" class="page5-1">
+        <div v-show="openPageTwo" class="page5-1">
             <div class="p5-1-dialog1">
                 <img src="../assets/p5/p5-dialog-1.png" alt="">
             </div>
@@ -39,7 +39,9 @@
         </div>
         <!-- 相册 -->
         <div class="page5-3" v-show="previewShow">
-            <div class="page5-close"></div>
+            <div class="page5-close">
+                <img src="../assets/p5/p5-close.png" alt="">
+            </div>
             <ul id="fonglezen_ddpic">
                 <li class="p1"><img :src="imgUrls[0]" class="goimg"></li>
                 <li class="p2"><img :src="imgUrls[1]" class="goimg"></li>
@@ -100,9 +102,22 @@ export default {
 
                 })
             })
-        },
-        nextPage() {
-            console.log(this)
+        }
+    },
+    computed: {
+        openPageTwo: function() {
+            if (this.imgUrls.length < 3) {
+                return true
+            } else {
+                // 跳转5-2 ，添加动画
+                $('.p5-2-ballon1').addClass('animated  zoomInUp').css('display', 'block')
+                $('.p5-2-ballon2').addClass('animated  zoomInUp').css('display', 'block')
+                $('.p5-2-ballon3').addClass('animated  zoomInUp').css('display', 'block')
+                setTimeout(function() {
+                    $('.p5-2-ballon1,.p5-2-ballon2,.p5-2-ballon3').css({ 'animation-name': 'float', 'animation-iteration-count': 'infinite' })
+                }, 6000)
+                return false
+            }
         }
     },
     mounted() {
@@ -144,7 +159,7 @@ export default {
                     setTimeout(function() {
 
                         flzpic.flz_dpli.find('img').attr('class', '');
-                        console.log(flzpic.flz_dpli.find('img'))
+                        // console.log(flzpic.flz_dpli.find('img'))
                         flzpic.flz_dpli.attr('class', '');
 
                         //move first li to last li
@@ -152,7 +167,8 @@ export default {
 
                         flzpic.flz_dpli.eq(0).remove();
                         // 这里有模板的问题
-                        flzpic.fonglezen_ddpic.append('<li data-v-57540eb6>' + firstLI + '</li>');
+                        // flzpic.fonglezen_ddpic.append('<li data-v-57540eb6>' + firstLI + '</li>');
+                        flzpic.fonglezen_ddpic.append(flzpic.flz_dpli.eq(0));
 
                     }, 500);
                 },
@@ -247,6 +263,8 @@ export default {
         width: 80%;
         height: auto;
         margin-left: -40%;
+        display: none;
+        animation-duration: 6s;
     }
     #file-input {
         position: absolute;
@@ -261,39 +279,49 @@ export default {
         position: absolute;
         top: 10%;
         left: 20%;
-        width: 60%;  
+        width: 60%;
+        display: none; 
+        animation-delay: 0.3s; 
     }
    
     .p5-1-dialog2 {
         position: absolute;
         top: 20%;
         left: 20%;
-        width: 60%;  
+        width: 60%;
+        display: none;  
+        animation-delay: 0.8s; 
     }
     .p5-1-click {
         position: absolute;
         top: 50%;
         left: 50%;
         width: 30%;
-        
+        display: none;
     }
     .p5-1-dialog1 img,.p5-1-dialog2 img,.p5-1-click img{
         width: 100%;  
     }
     .p5-2-ballon1 {
         position: absolute;
+        display: none;
+        animation-duration: 4s;
         top: 20%;
         left: 10%;
         width: 40%;
     }
     .p5-2-ballon2 {
         position: absolute;
+        display: none;
+        animation-duration: 5s;
         top: 10%;
         right: 10%;
         width: 40%;
     }
     .p5-2-ballon3 {
         position: absolute;
+        display: none;
+        animation-duration: 3s;
         top: 50%;
         left: 20%;
         width: 60%;
@@ -322,12 +350,13 @@ export default {
     /* fontlezen_ddpic begin */
     /* 相册样式 */
     .page5-close {
-        width: 2rem;
-        height: 2rem;
-        background-color: red;
+        width: 10%;
         position: absolute;
-        top: 2rem;
-        right: 2rem;
+        top: 5%;
+        right: 5%;
+    }
+    .page5-close img{
+        width: 100%;
     }
     #fonglezen_ddpic {
         width: 80%;
@@ -474,11 +503,11 @@ export default {
     @keyframes hideToleft {
         from {
             opacity: 1;
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0) scale(1);
         }
         to {
             opacity: 0;
-            transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0) scale(0.5);
         }
     }
 

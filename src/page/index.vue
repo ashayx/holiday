@@ -170,6 +170,16 @@ export default {
                                 $('.p4-person-2').css('display', 'block')
                             },1000)
                             break;
+                        case 8:
+                            //第五页动画
+                            $('.p5-1-dialog1').addClass('animated  fadeInUp').css('display', 'block')
+                            $('.p5-1-dialog2').addClass('animated  fadeInUp').css('display', 'block')
+                            $('.p5-1-ballon').addClass('animated  zoomInUp').css('display', 'block')
+                            setTimeout(function() {
+                                $('.p5-1-click').addClass('animated  pulse infinite').css('display', 'block')
+                                
+                            }, 6000)
+                            break;
                         case 9:
                             //第六页动画，尾页
                             $('.p6-word').addClass('animated  fadeInUp').css('display', 'block')
@@ -180,6 +190,9 @@ export default {
                             $('.p6-ballon-5').addClass('animated  float infinite').css('display', 'block')
                             $('.p6-ballon-6').addClass('animated  float infinite').css('display', 'block')
                             $('.p6-share').addClass('animated  rubberBand').css('display', 'block')
+                            setTimeout(function() {
+                                $('.p6-ballon-1,.p6-ballon-2,.p6-ballon-3').css({ 'animation-name': 'float', 'animation-iteration-count': 'infinite' })
+                            }, 6000)
                             break;
                     }
                 } 
@@ -213,7 +226,20 @@ export default {
         })
         // 第五页相册关闭
         $('.page5-close').on('touchstart', function() {
-            _this.swiper.slideTo(9, 100, false)
+            _this.swiper.slideTo(9, 100, function() {
+                // 进入第六页动画，尾页
+                $('.p6-word').addClass('animated  fadeInUp').css('display', 'block')
+                $('.p6-ballon-1').addClass('animated  zoomInUp').css('display', 'block')
+                $('.p6-ballon-2').addClass('animated  zoomInUp').css('display', 'block')
+                $('.p6-ballon-3').addClass('animated  zoomInUp').css('display', 'block')
+                $('.p6-ballon-4').addClass('animated  float infinite').css('display', 'block')
+                $('.p6-ballon-5').addClass('animated  float infinite').css('display', 'block')
+                $('.p6-ballon-6').addClass('animated  float infinite').css('display', 'block')
+                $('.p6-share').addClass('animated  rubberBand').css('display', 'block')
+                setTimeout(function() {
+                    $('.p6-ballon-1,.p6-ballon-2,.p6-ballon-3').css({ 'animation-name': 'float', 'animation-iteration-count': 'infinite' })
+                }, 6000)
+            })
         })
        
     },
@@ -239,7 +265,7 @@ export default {
                 $('.p1-button').addClass('animated  rubberBand').css('display', 'block')
                 setTimeout(function() {
                     $('.p1-ballon-1,.p1-ballon-2,.p1-ballon-3').css({'animation-name':'float','animation-iteration-count':'infinite'})
-                    $('.p1-gestrue').addClass('animated  float infinite').css('display', 'block')
+                    $('.p1-gestrue').addClass('animated  pulse infinite').css('display', 'block')
                 },6000)
             })
         }   
