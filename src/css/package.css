@@ -165,7 +165,7 @@ body {
   overflow: hidden;
 }
 
-.loading, .main, .end {
+.video-loading, .main, .end {
   position: absolute;
   top: 0;
   left: 0;

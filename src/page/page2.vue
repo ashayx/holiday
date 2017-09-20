@@ -7,6 +7,19 @@
         <div class="p2-words-2">
             <img src="../assets/p2/p2-words-2.png" alt="">
         </div>
+    
+        <div class="p2-animal-1">
+            <img src="../assets/p2/p2-animal-1.png" alt="">
+        </div>
+
+        <div class="p2-animal-2">
+            <img src="../assets/p2/p2-animal-2.png" alt="">
+        </div>
+
+        
+        <div class="p2-animal-3">
+            <img src="../assets/p2/p2-animal-3.png" alt="">
+        </div>
 
     </div>
 </template>
@@ -50,5 +63,34 @@ img {
     width: 60%;
     animation-delay: 1.5s;
 }
+
+
+.p2-animal-1 {
+    position: absolute;
+    top: 22%;
+    right: 0;
+    width: 30%;
+    animation-delay: 1.2s;
+}
+
+
+.p2-animal-2 {
+    position: absolute;
+    top: 45%;
+    left: 14%;
+    width: 25%;
+    animation-delay: 1s;
+}
+
+
+.p2-animal-3 {
+    position: absolute;
+    top: 49%;
+    right: 20%;
+    width: 22%;
+    animation-delay: 1s;
+}
+
+
 
 </style>

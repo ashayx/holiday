@@ -1,6 +1,13 @@
 <template>
     <div class="page4">
         
+        <div class="p4-person-1">
+            <img src="../assets/p4/p4-person-1.png" alt="">
+        </div>
+        <div class="p4-person-2">
+            <img src="../assets/p4/p4-person.png" alt="">
+        </div>
+
         <div class="star">
             <div class="star1" @click="getVideoUrl"></div>
             <div class="star2" @click="getVideoUrl"></div>
@@ -9,7 +16,7 @@
         <section style="visibility:hidden">
 
             <!-- S loading 动画，对应的样式在 src/css/loading.scss -->
-            <div id="o2_loading" class="loading">
+            <div id="o2_loading" class="video-loading">
                 <div class="btns">
                     <a class="btn begin">播放</a>
                 </div>
@@ -43,20 +50,16 @@
             <!-- <div class="tip"></div> -->
         </section>
 
-        
-
-
     </div>
 </template>
 <script>
-    
+
 import '@/css/package.css'
 import '@/js/zepto'
 import '@/js/detect'
 import '@/js/fx'
 import '@/js/fx_methods'
 import makeVideoPlayableInline from 'iphone-inline-video'
-
 export default {
     data() {
         return {
@@ -87,11 +90,9 @@ export default {
         var TBS = ua.match(/TBS\/([\d.]+)/)
         var TBS_V0 = '036849' // TBS >=036849 支持 x5-video-player-type
         var TBS_V1 = '036900' // TBS >=036900 正确支持 x5videoenterfullscreen，036849 <= TBS < 036900 支持的 x5videoxxxx 事件是反的
-
         var QQB = ua.match(/MQQBrowser\/([\d.]+)/)
         var QQB_V0 = '7.1' // MQQBrowser >=7.1 支持 x5-video-player-type
         var QQB_V1 = '7.2' // MQQBrowser >=7.2 正确支持 x5videoenterfullscreen，7.1 <= TBS < 7.2 支持的 x5videoxxxx 事件是反的
-
         var tbs = {}
         if (TBS) {
             tbs.isTBS = true
@@ -106,7 +107,6 @@ export default {
                 useH5Play()
             }
         }
-
         if (TBS) {
             $tip.append('TBS: ' + TBS[0] + ' | ' + TBS[1] + '<br>')
         } else {
@@ -117,12 +117,10 @@ export default {
         } else {
             $tip.append('MQQBrowser: ' + QQB + '<br>')
         }
-
         function useH5Play() {
             $('#video').attr('x5-video-player-type', 'h5')
             $('#video').attr('x5-video-player-fullscreen', 'true')
         }
-
         /**
          * video
          */
@@ -140,7 +138,6 @@ export default {
         video.isFirst = true
         video.show = function() {
             video.isFirst = false
-
             video.$el.addClass('show')
             video.$main.show()
             video.$el.fadeIn()
@@ -149,7 +146,6 @@ export default {
         video.start = function() {
             video.$poster.show()
             video.el.play()
-
             if (video.isCanPlay) {
                 video.show()
             }
@@ -159,28 +155,23 @@ export default {
             if (video.el.currentTime > 3) {
                 video.$skipBtn.show()
             }
-
             if (video.isFirst) {
                 video.show()
             }
             video.isCanPlay = true
         })
-
         video.el.addEventListener('ended', function(e) {
             video.$main.fadeOut()
             end.enter()
         })
-
         // 处理 iOS 的兼容性
         if ($.os.ios) {
             makeVideoPlayableInline(video.el)
         }
-
         // 处理 tbs/QQBrowser 的兼容性
         if (tbs.isTBS) {
             video.el.addEventListener("x5videoenterfullscreen", function() {
                 $tip.append("x5video enter fullscreen<br>");
-
                 if (tbs.isRightEvent) {
                     video.$skipBtn.hide()
                     video.$continueBtn.hide()
@@ -189,10 +180,8 @@ export default {
                     video.$continueBtn.show()
                 }
             })
-
             video.el.addEventListener("x5videoexitfullscreen", function() {
                 $tip.append("x5video exit fullscreen<br>");
-
                 if (tbs.isRightEvent) {
                     video.$skipBtn.show()
                     video.$continueBtn.show()
@@ -202,8 +191,6 @@ export default {
                 }
             })
         }
-
-
         /**
          * end
          */
@@ -215,51 +202,40 @@ export default {
         end.leave = function() {
             $('.end').addClass('hide')
         }
-
         /**
          * event bind
          */
         // $('body').on('touchstart', function(e) {
         //     e.preventDefault()
         // })
-
         $('.begin').on('touchstart', function() {
-            $('.loading').hide()
+            $('.video-loading').hide()
             $('.main').show()
-
             video.start()
         })
-
         $('.skip').on('touchstart', function() {
             end.enter()
             video.el.pause()
             video.el.currentTime = '0'
-
             $('.main').hide()
         })
-
         $('.continue').on('touchstart', function() {
             video.el.play()
         })
-
         $('.replay').on('touchstart', function() {
             end.leave()
             $('.main').show()
-
             video.start()
         })
         $('.exit').on('touchstart', function() {
             $('section').css('visibility', 'hidden')
         })
-
-
         // 计算 wrapper 的 margin-top 值，视频以宽度为基准居中播放
         function handleResize() {
             var sWidth = 9
             var sHeight = 16
             var width = window.innerWidth
             var height = window.innerHeight
-
             var marginTop = height - (width * sHeight) / sWidth
             marginTop = Math.round(marginTop)
             if (marginTop < -2) {
@@ -272,15 +248,12 @@ export default {
         window.addEventListener('resize', function() {
             handleResize()
         })
-
     }
 }
-
 </script>
 
 
 <style scoped>
-
 .page4 {
     width: 100%;
     height: 100%;
@@ -293,6 +266,7 @@ export default {
 img {
     width: 100%;
 }
+
 .star1 {
     position: absolute;
     left: 20%;
@@ -312,5 +286,22 @@ img {
     background: url(../assets/p4/p4-star-1.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
-</style>
 
+.p4-person-1 {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    width: 50%;
+    animation-delay: 0.3s;
+}
+
+.p4-person-2 {
+    position: absolute;
+    display: none;
+    bottom: 0;
+    left: 7%;
+    width: 76%;
+    animation-delay: 1s;
+}
+
+</style>
