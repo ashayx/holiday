@@ -6,16 +6,16 @@
             <img src="../assets/p6/p6-balloon-1.png" >
         </div>
         <div class="p6-ballon-2">
-            <img src="../assets/p6/p6-balloon-1.png" >
+            <img src="../assets/p6/p6-balloon-2.png" >
         </div>
         <div class="p6-ballon-3">
-            <img src="../assets/p6/p6-balloon-1.png" >
+            <img src="../assets/p6/p6-balloon-2.png" >
         </div>
         <div class="p6-ballon-4">
-            <img src="../assets/p6/p6-balloon-1.png" >
+            <img src="../assets/p6/p6-balloon-3.png" >
         </div>
         <div class="p6-ballon-5">
-            <img src="../assets/p6/p6-balloon-1.png" >
+            <img src="../assets/p6/p6-balloon-3.png" >
         </div>
         <div class="p6-ballon-6">
             <img src="../assets/p6/p6-balloon-1.png" >

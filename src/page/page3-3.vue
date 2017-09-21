@@ -29,7 +29,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    display: none;
+    /* display: none; */
     background: url(../assets/p3-3/p3-3-bg.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
@@ -40,6 +40,7 @@ img {
 
 .p3-3-person {
     position: absolute;
+    display: none;
     bottom: 0;
     left: 35%;
     width: 50%;
@@ -48,6 +49,7 @@ img {
 
 .p3-3-word {
     position: absolute;
+    display: none;
     bottom: 45%;
     left: 0;
     width: 55%;

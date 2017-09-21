@@ -41,7 +41,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    display: none;
+    /* display: none; */
     background: url(../assets/p2/p2-bg.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
@@ -50,14 +50,17 @@ img {
 }
 .p2-words-1 {
     position: absolute;
+    display: none;
     top: 30%;
     left: 10%;
     width: 80%;
     animation-delay: 0.5s;
+
 }
 
 .p2-words-2 {
     position: absolute;
+    display: none;
     top: 55%;
     left: 20%;
     width: 60%;
@@ -67,6 +70,7 @@ img {
 
 .p2-animal-1 {
     position: absolute;
+    display: none;
     top: 22%;
     right: 0;
     width: 30%;
@@ -76,6 +80,7 @@ img {
 
 .p2-animal-2 {
     position: absolute;
+    display: none;
     top: 45%;
     left: 14%;
     width: 25%;
@@ -85,6 +90,7 @@ img {
 
 .p2-animal-3 {
     position: absolute;
+    display: none;
     top: 49%;
     right: 20%;
     width: 22%;

@@ -2,15 +2,21 @@
     <div class="page4">
         
         <div class="p4-person-1">
-            <img src="../assets/p4/p4-person-1.png" alt="">
+            <img src="../assets/p3-3/p3-3-person.png" alt="">
         </div>
         <div class="p4-person-2">
             <img src="../assets/p4/p4-person.png" alt="">
         </div>
-
+        <div class="p4-click animated pulse infinite">
+            <img src="../assets/p4/p4-click.png" alt="">
+        </div>
         <div class="star">
-            <div class="star1" @click="getVideoUrl"></div>
-            <div class="star2" @click="getVideoUrl"></div>
+            <div class="star1 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="star2 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="star3 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="star4 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="star5 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="star6 animated pulse infinite" @click="getVideoUrl"></div>
         </div>
 
         <section style="visibility:hidden">
@@ -18,7 +24,8 @@
             <!-- S loading 动画，对应的样式在 src/css/loading.scss -->
             <div id="o2_loading" class="video-loading">
                 <div class="btns">
-                    <a class="btn begin">播放</a>
+                    <a class=" begin btn-play"></a>
+                    <a class=" exit"></a>
                 </div>
             </div>
             <!-- E loading -->
@@ -41,8 +48,8 @@
             <!-- S KV 页 -->
             <div id="o2_end" class="end hide">
                 <div class="btns">
-                    <a class="btn replay">再看一次</a>
-                    <a class="btn exit">返回</a>
+                    <a class="btn replay ">再看一次</a>
+                    <a class=" exit"></a>
                 </div>
             </div>
             <!-- E KV 页 -->
@@ -227,9 +234,6 @@ export default {
             $('.main').show()
             video.start()
         })
-        $('.exit').on('touchstart', function() {
-            $('section').css('visibility', 'hidden')
-        })
         // 计算 wrapper 的 margin-top 值，视频以宽度为基准居中播放
         function handleResize() {
             var sWidth = 9
@@ -259,14 +263,21 @@ export default {
     height: 100%;
     position: relative;
     /* display: none; */
-    background: url(../assets/p4/p4-bg.png) 0 0 no-repeat;
+    background: url(../assets/p3-3/p3-3-bg.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
 
 img {
     width: 100%;
 }
-
+.p4-click {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 20%;
+    height: 20%;
+    display: none;
+}
 .star1 {
     position: absolute;
     left: 20%;
@@ -279,13 +290,55 @@ img {
 
 .star2 {
     position: absolute;
-    right: 30%;
-    top: 20%;
+    top: 30%;
+    left: 45%;
     width: 3rem;
     height: 3rem;
     background: url(../assets/p4/p4-star-1.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
+
+.star3 {
+    position: absolute;
+    left: 62%;
+    top: 40%;
+    width: 2rem;
+    height: 2rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star4 {
+    position: absolute;
+    right: 50%;
+    top: 10%;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: url(../assets/p4/p4-star-3.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star5 {
+    position: absolute;
+    left: 5%;
+    top: 33%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star6 {
+    position: absolute;
+    left: 15%;
+    top: 5%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+
 
 .p4-person-1 {
     position: absolute;
@@ -299,9 +352,28 @@ img {
     position: absolute;
     display: none;
     bottom: 0;
-    left: 7%;
-    width: 76%;
+    left: 4%;
+    width: 81%;
     animation-delay: 1s;
 }
-
+.btn-play {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    background: url(../assets/p4/play.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+.exit {
+   display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    background: url(../assets/p4/close.png) 0 0 no-repeat;
+    background-size: 100% 100%; 
+}
 </style>

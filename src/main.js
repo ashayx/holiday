@@ -11,7 +11,6 @@ import './js/config'
 import './css/loading.css'
 import './css/swiper.min.css'
 import './css/animate .css'
-// import './css/photo.css'
 import './css/weui.css'
 
 Vue.config.productionTip = false

@@ -62,9 +62,9 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    display: none;
-    background: url(../assets/p3/p3-bg.png) 0 0 no-repeat;
-    background-size: 100% 100%;
+    /* display: none; */
+    background: url(../assets/p3/p3-bg.png) 0 -2px no-repeat;
+    background-size: 100% 102%;
 }
 
 img {
@@ -79,6 +79,7 @@ img {
     z-index: 2;
     animation-delay: 0.5s;
     animation-duration: 4s;
+    display: none;
 
 }
 

@@ -9,6 +9,24 @@
             <img src="../assets/p3-2/p3-2-word.png" alt="">
         </div>
 
+        <div class="p3-2-cloud-1">
+            <img src="../assets/p3/p3-cloud-1.png" alt="">
+        </div>
+        <div class="p3-2-cloud-2">
+            <img src="../assets/p3/p3-cloud-2.png" alt="">
+        </div>
+
+        <div class="p3-2-cloud-3">
+            <img src="../assets/p3/p3-cloud-3.png" alt="">
+        </div>
+
+        <div class="p3-2-cloud-4">
+            <img src="../assets/p3/p3-cloud-4.png" alt="">
+        </div>
+
+        <div class="p3-2-cloud-5">
+            <img src="../assets/p3/p3-cloud-5.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -29,7 +47,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    display: none;
+    /* display: none; */
     background: url(../assets/p3-2/p3-2-bg.png) 0 0 no-repeat;
     background-size: 100% 100%;
     /* animation-duration: 0.2s; */
@@ -41,6 +59,7 @@ img {
 
 .p3-2-person {
     position: absolute;
+    display: none;
     bottom: 0;
     left: 0;
     width: 80%;
@@ -50,9 +69,57 @@ img {
 
 .p3-2-word {
     position: absolute;
+    display: none;
     bottom: 55%;
     right: 0;
     width: 55%;
     animation-delay: 1.5s;
 }
+
+.p3-2-cloud-1 {
+    position: absolute;
+    opacity: 0.9;
+    top: -20%;
+    left: -20%;
+    width: 80%;
+    animation-duration: 10s;
+}
+
+.p3-2-cloud-2 {
+    position: absolute;
+    opacity: 0.9;
+    top: -20%;
+    left: -10%;
+    width: 100%;
+    animation-duration: 10s;
+}
+
+
+.p3-2-cloud-3 {
+    position: absolute;
+    opacity: 0.9;
+    top: -10%;
+    right: -20%;
+    width: 100%;
+    animation-duration: 10s;
+}
+
+.p3-2-cloud-4 {
+    position: absolute;
+    opacity: 0.9;
+    bottom: 0;
+    left: -10%;
+    width: 40%;
+    animation-duration: 10s;
+}
+
+.p3-2-cloud-5 {
+    position: absolute;
+    opacity: 0.9;
+    bottom: 0;
+    right: -40%;
+    width: 80%;
+    animation-duration: 10s;
+}
+
 </style>

@@ -216,8 +216,9 @@ body {
 
 .btn {
   display: inline-block;
-  padding: 20px 40px;
+  padding: 1rem 1rem;
   border: 1PX solid white;
+  border-radius: 1rem;
   color: white;
   font-size: 28px;
 }

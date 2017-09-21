@@ -2,7 +2,7 @@
     <div class="page3-4">
 
         <div class="p3-4-person">
-            <img src="../assets/p3-4/p3-4-person.png" alt="">
+            <img src="../assets/p3-3/p3-3-person.png" alt="">
         </div>
 
         <div class="p3-4-word-1">
@@ -41,8 +41,8 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    display: none;
-    background: url(../assets/p3-4/p3-4-bg.png) 0 0 no-repeat;
+    /* display: none; */
+    background: url(../assets/p3-3/p3-3-bg.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
 
@@ -52,6 +52,7 @@ img {
 
 .p3-4-person {
     position: absolute;
+    display: none;
     bottom: 0;
     left: 25%;
     width: 50%;
@@ -60,6 +61,7 @@ img {
 
 .p3-4-word-1 {
     position: absolute;
+    display: none;
     top: 17%;
     left: 30%;
     width: 40%;
@@ -68,6 +70,7 @@ img {
 
 .p3-4-word-2{
     position: absolute;
+    display: none;
     top: 26%;
     left: 10%;
     width: 80%;
@@ -76,6 +79,7 @@ img {
 
 .p3-4-word-3 {
     position: absolute;
+    display: none;
     top: 33%;
     left: 20%;
     width: 60%;
@@ -84,6 +88,7 @@ img {
 
 .p3-4-word-4 {
     position: absolute;
+    display: none;
     top: 40%;
     left: 20%;
     width: 60%;
