@@ -55,7 +55,7 @@
                 <swiper-slide class="swiper-item stop-swiping">
                     <page6></page6>
                 </swiper-slide>
-                <!-- <div class="swiper-pagination swiper-pagination-main" slot="pagination"></div> -->
+                <div class="swiper-pagination swiper-pagination-main" slot="pagination"></div>
             </swiper>
         </div>
 </template>
@@ -268,6 +268,7 @@ export default {
             $('.swiper-box').css('display', 'none')
             Pace.on('done', function() {
                 Pace.stop()
+
                 $('.loading').css('display', 'none')
                 $('.swiper-box').css('display', 'block')
                 console.log('加载完成')

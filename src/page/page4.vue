@@ -62,7 +62,7 @@
 <script>
 
 import '@/css/package.css'
-import '@/js/zepto'
+// import '@/js/zepto'
 import '@/js/detect'
 import '@/js/fx'
 import '@/js/fx_methods'

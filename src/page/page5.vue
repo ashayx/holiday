@@ -70,6 +70,7 @@ export default {
     methods: {
 
         imgUpload(e) {
+            
             // console.log(e)
             var _this = this
             _this.imgCount++;
@@ -100,6 +101,32 @@ export default {
                     loading.hide()
                     console.log(_this.imgUrls)
 
+                    if (_this.imgCount === 3) {
+                        
+
+                        let postImg = _this.imgUrls
+                        // 上传相册的路径和openid
+                        $.post('http://h5.sjzzimu.com/crazyDayServ/weekday/crazy_addPic.do', {
+                            openid: myuserOpenid,
+                
+                            ypic_url: postImg[0],
+                            hpic_url: postImg[1],
+                            lpic_url: postImg[2],
+                        }, function(response) {
+                            console.log(response)
+                            console.log('上传openid')
+
+                            yundaoWx.share_title = "我的最野假期";
+                            yundaoWx.share_desc = "让梦想和假期一起飞翔！";
+                            yundaoWx.share_link = "http://h5.sjzzimu.com/holiday/index.html?fromId=" + myuserOpenid;
+                            yundaoWx.share_imgUrl = "http://h5.sjzzimu.com/xiaozhao/images/min.png";
+                            yundaoWx.share();
+
+                        }) 
+                        
+                        
+                        
+                    }
                 })
             })
         }
@@ -206,7 +233,6 @@ export default {
                 flzpic.flz_dpli = flzpic.fonglezen_ddpic.find('li');
 
                 if (Math.abs(flzpic.pmoveY) < flzpic.windowHeight * 0.1 && flzpic.pmoveX < 0) {
-                    console.log('zuo')
                     flzpic.flz_dpli.eq(0).attr('class', 'hideToleft');
                     flzpic.shownext();
                 } else if (Math.abs(flzpic.pmoveY) < flzpic.windowHeight * 0.1 && flzpic.pmoveX > 0) {
@@ -516,6 +542,7 @@ export default {
         -webkit-animation-fill-mode: both;
         animation: hideToleft 0.5s;
         animation-fill-mode: both;
+        
     }
 
 

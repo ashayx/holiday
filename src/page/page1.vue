@@ -34,9 +34,9 @@
                 <img src="../assets/p5/p5-close.png" alt="">
             </div>
             <ul id="showOhterPhoto">
-                <li class="p1"><img src="../assets/p1/p1-bg.png" class="goimg"></li>
-                <li class="p2"><img src="../assets/p2/p2-bg.png" class="goimg"></li>
-                <li class="p3"><img src="../assets/p3/p3-bg.png" class="goimg"></li>
+                <li class="p1"><img :src="imgUrls.hpic_url" class="goimg"></li>
+                <li class="p2"><img :src="imgUrls.lpic_url" class="goimg"></li>
+                <li class="p3"><img :src="imgUrls.ypic_url" class="goimg"></li>
             </ul>
         </div>
 
@@ -44,15 +44,37 @@
 </template>
 
 <script>
+// openid: 'otkjJwzrZgu6NYHnZl0TtKDZpvWw',
 export default {
     name: 'page1',
     data() {
         return {
-            baseSrc: [],
-            imgUrls: [],
-            imgCount: 0,
+            imgUrls: ['','',''],
             previewShow: false,
+        }
+    },
+    created() {
+        this.getPhoto()
+    },
+    methods: {
+        getPhoto() {
+            // 获取openid 的相册
 
+            const fromId = yundaoWx.getUrlParam('fromId')
+            if(fromId == null){
+                
+                console.log(fromId)
+                return
+            }
+            let _this = this
+            _this.imgUrls = []
+            $.get('http://h5.sjzzimu.com/crazyDayServ/weekday/crazy_checkPicByOpenid.do', {
+                openid: fromId
+            }, function(data) {
+                let response = JSON.parse(data);
+                console.log(response.list[0])
+                _this.imgUrls = response.list[0]
+            }) 
         }
     },
      mounted() {
@@ -139,7 +161,6 @@ export default {
                 flzpic.flz_dpli = flzpic.fonglezen_ddpic.find('li');
 
                 if (Math.abs(flzpic.pmoveY) < flzpic.windowHeight * 0.1 && flzpic.pmoveX < 0) {
-                    console.log('zuo')
                     flzpic.flz_dpli.eq(0).attr('class', 'hideToleft');
                     flzpic.shownext();
                 } else if (Math.abs(flzpic.pmoveY) < flzpic.windowHeight * 0.1 && flzpic.pmoveX > 0) {
