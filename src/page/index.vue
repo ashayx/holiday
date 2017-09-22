@@ -62,6 +62,10 @@
             <div id="music" class="p1musle">
                 <audio id="aud" src="./static/music.mp3" autoplay="autoplay" loop="loop"></audio>
             </div>
+
+            <div class="footer">
+                <img src="../assets/p1/footer.png" >
+            </div>
         </div>
 </template>
 
@@ -233,7 +237,6 @@ export default {
     },
     created() {
         this.loading()
-        // console.log('创建')
     },
     computed: {
         swiper() {
@@ -247,7 +250,6 @@ export default {
       
         music.on('touchstart', function() {
             if (aud.paused) {
-                console.log(this)
                 aud.play()
                 this.style.background = "url('./static/musicon.png')"
                 this.style.backgroundSize = "100% 100%"
@@ -276,7 +278,6 @@ export default {
             event.preventDefault();
         })
         // 如果fromId为空，跳转第二页
-        console.log(this.$refs.getFromId.fromId)
         let fromId = this.$refs.getFromId.fromId 
         if(fromId == null) {
              _this.swiper.slideTo(1, 800, function() {
@@ -477,6 +478,16 @@ body {
     }
 }
 
+.footer {
+    position: absolute;
+    z-index: 100;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    margin: 0;
 
-
+}
+.footer img {
+    width: 100%;
+}
 </style>
