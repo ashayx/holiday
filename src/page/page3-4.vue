@@ -1,5 +1,14 @@
 <template>
     <div class="page3-4">
+        
+        <div class="star">
+            <div class="star1 animated pulse infinite"></div>
+            <div class="star2 animated pulse infinite"></div>
+            <div class="star3 animated pulse infinite"></div>
+            <div class="star4 animated pulse infinite"></div>
+            <div class="star5 animated pulse infinite"></div>
+            <div class="star6 animated pulse infinite"></div>
+        </div>
 
         <div class="p3-4-person">
             <img src="../assets/p3-3/p3-3-person.png" alt="">
@@ -20,6 +29,13 @@
         <div class="p3-4-word-4">
             <img src="../assets/p3-4/p3-4-word-4.png" alt="">
         </div>
+
+        <div class="p3-4-arrow animated float infinite">
+            <img src="../assets/p2/arrow.png" >
+        </div>
+
+        
+        
 
     </div>
 </template>
@@ -93,6 +109,76 @@ img {
     left: 20%;
     width: 60%;
     animation-delay: 2.5s;
+}
+
+.p3-4-arrow {
+    position: absolute;
+    display: none;
+    bottom: 5%;
+    left: 45%;
+    width: 10%;
+    animation-delay: 1s;
+    animation-duration: 1.25s;
+}
+
+.star1 {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    width: 3rem;
+    height: 3rem;
+    background: url(../assets/p4/p4-star-1.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star2 {
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    width: 3rem;
+    height: 3rem;
+    background: url(../assets/p4/p4-star-1.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star3 {
+    position: absolute;
+    left: 62%;
+    top: 40%;
+    width: 2rem;
+    height: 2rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star4 {
+    position: absolute;
+    right: 50%;
+    top: 10%;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: url(../assets/p4/p4-star-3.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star5 {
+    position: absolute;
+    left: 5%;
+    top: 33%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.star6 {
+    position: absolute;
+    left: 15%;
+    top: 5%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../assets/p4/p4-star-2.png) 0 0 no-repeat;
+    background-size: 100% 100%;
 }
 
 

@@ -400,8 +400,8 @@ export default {
         left: 0;
         top: 0;
         text-align: center;
-        width: 247px;
-        height: 413px;
+        width: 100%;
+        height: 100%;
         box-sizing: border-box;
     }
 

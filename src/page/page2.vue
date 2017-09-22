@@ -21,6 +21,9 @@
             <img src="../assets/p2/p2-animal-3.png" alt="">
         </div>
 
+        <div class="p2-arrow animated float infinite">
+            <img src="../assets/p2/arrow.png" >
+        </div>
     </div>
 </template>
 
@@ -95,6 +98,17 @@ img {
     right: 20%;
     width: 22%;
     animation-delay: 1s;
+}
+
+
+.p2-arrow {
+    position: absolute;
+    display: none;
+    bottom: 5%;
+    left: 45%;
+    width: 10%; 
+    animation-delay: 1s;
+    animation-duration: 1.25s;  
 }
 
 

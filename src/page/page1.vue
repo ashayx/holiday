@@ -45,27 +45,32 @@
 
 <script>
 // openid: 'otkjJwzrZgu6NYHnZl0TtKDZpvWw',
+
 export default {
     name: 'page1',
     data() {
         return {
             imgUrls: ['','',''],
             previewShow: false,
+            fromId: null,  //传递给父组件
+            
         }
     },
     created() {
+
         this.getPhoto()
     },
     methods: {
         getPhoto() {
+            
             // 获取openid 的相册
-
             const fromId = yundaoWx.getUrlParam('fromId')
-            if(fromId == null){
-                
-                console.log(fromId)
+            // const fromId = 'one'
+            this.fromId = fromId
+            if (fromId == null) {
                 return
             }
+
             let _this = this
             _this.imgUrls = []
             $.get('http://h5.sjzzimu.com/crazyDayServ/weekday/crazy_checkPicByOpenid.do', {
@@ -78,6 +83,7 @@ export default {
         }
     },
      mounted() {
+        
         $.fn.fonglezenDDpic = function() {
 
             var actions = {
@@ -315,8 +321,8 @@ img {
        left: 0;
        top: 0;
        text-align: center;
-       width: 247px;
-       height: 413px;
+       width: 100%;
+       height: 100%;
        box-sizing: border-box;
    }
 

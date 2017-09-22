@@ -11,12 +11,12 @@
             <img src="../assets/p4/p4-click.png" alt="">
         </div>
         <div class="star">
-            <div class="star1 animated pulse infinite" @click="getVideoUrl"></div>
-            <div class="star2 animated pulse infinite" @click="getVideoUrl"></div>
-            <div class="star3 animated pulse infinite" @click="getVideoUrl"></div>
-            <div class="star4 animated pulse infinite" @click="getVideoUrl"></div>
-            <div class="star5 animated pulse infinite" @click="getVideoUrl"></div>
-            <div class="star6 animated pulse infinite" @click="getVideoUrl"></div>
+            <div class="starCtrl star1 animated pulse infinite" ></div>
+            <div class="starCtrl star2 animated pulse infinite" ></div>
+            <div class="starCtrl star3 animated pulse infinite" ></div>
+            <div class="starCtrl star4 animated pulse infinite" ></div>
+            <div class="starCtrl star5 animated pulse infinite" ></div>
+            <div class="starCtrl star6 animated pulse infinite" ></div>
         </div>
 
         <section style="visibility:hidden">
@@ -25,7 +25,7 @@
             <div id="o2_loading" class="video-loading">
                 <div class="btns">
                     <a class=" begin btn-play"></a>
-                    <a class=" exit"></a>
+                    <!-- <a class=" exit"></a> -->
                 </div>
             </div>
             <!-- E loading -->
@@ -38,8 +38,10 @@
 
                 </div>
                 <div class="btns control">
+                    <!-- <a class=" exit"></a> -->
                     <a class="btn continue">继续</a>
-                    <a class="btn skip">跳过</a>
+                    <!-- 跳过退出 -->
+                    <a class="btn skip exit">跳过</a> 
                 </div>
                 <div class="poster"></div>
             </div>
@@ -49,7 +51,7 @@
             <div id="o2_end" class="end hide">
                 <div class="btns">
                     <a class="btn replay ">再看一次</a>
-                    <a class=" exit"></a>
+                    <!-- <a class=" exit"></a> -->
                 </div>
             </div>
             <!-- E KV 页 -->
@@ -70,20 +72,24 @@ import makeVideoPlayableInline from 'iphone-inline-video'
 export default {
     data() {
         return {
-            playVideo: 'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+            playVideo: './static/video.mp4',
             videoUrl: [
-                'http://wqs.jd.com/promote/superfestival/superfestival.mp4',
-                'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
+                './static/video.mp4',
+                // 'http://wqs.jd.com/promote/superfestival/superfestival.mp4',
+                // 'http://file.ih5.cn/v3/files/2079800/20170915/f833a527.mp4',
             ]
         }
     },
     methods: {
         getVideoUrl() {
+            // 随机播放视频
             let len = this.videoUrl.length
+            // console.log(len)
             let key = Math.floor(Math.random() * len)
-            console.log(key)
+            // console.log(key)
             this.playVideo = this.videoUrl[key]
             $('section').css('visibility', 'visible')
+
         }
     },
     mounted() {
@@ -215,7 +221,21 @@ export default {
         // $('body').on('touchstart', function(e) {
         //     e.preventDefault()
         // })
-        $('.begin').on('touchstart', function() {
+        // 开始播放
+        // $('.begin').on('touchstart', function() {
+        //     $('.video-loading').hide()
+        //     $('.main').show()
+        //     video.start()
+        // })
+        $('.starCtrl').on('touchstart', function() {
+            $('.page4 section').css('visibility', 'visible')
+            aud.pause()
+            $('#music').css({
+                'background': "url('./static/musicoff.png')",
+                'background-size': '100% 100%',
+                'animation': 'null'
+            })
+            // 视频播放
             $('.video-loading').hide()
             $('.main').show()
             video.start()
@@ -236,17 +256,19 @@ export default {
         })
         // 计算 wrapper 的 margin-top 值，视频以宽度为基准居中播放
         function handleResize() {
-            var sWidth = 9
-            var sHeight = 16
+            var sWidth = 85
+            var sHeight = 48
             var width = window.innerWidth
             var height = window.innerHeight
-            var marginTop = height - (width * sHeight) / sWidth
-            marginTop = Math.round(marginTop)
-            if (marginTop < -2) {
-                video.$wrapper.css('marginTop', marginTop / 2 + 'px')
-            } else {
-                video.$wrapper.css('marginTop', '0')
-            }
+            // var marginTop = height - (width * sHeight) / sWidth
+            // marginTop = Math.round(marginTop)
+            // if (marginTop < -2) {
+            //     video.$wrapper.css('marginTop', marginTop / 2 + 'px')
+            // } else {
+            //     video.$wrapper.css('marginTop', '0')
+            // }
+            // var marginTop = 45%
+            video.$wrapper.css('marginTop', '45%')
         }
         handleResize()
         window.addEventListener('resize', function() {
@@ -366,7 +388,7 @@ img {
     background: url(../assets/p4/play.png) 0 0 no-repeat;
     background-size: 100% 100%;
 }
-.exit {
+/* .exit {
    display: inline-block;
     width: 3rem;
     height: 3rem;
@@ -375,5 +397,5 @@ img {
     right: 10%;
     background: url(../assets/p4/close.png) 0 0 no-repeat;
     background-size: 100% 100%; 
-}
+} */
 </style>

@@ -36,6 +36,10 @@
             <img src="../assets/p3/p3-cloud-5.png" alt="">
         </div>
 
+        <div class="p3-arrow animated float infinite">
+            <img src="../assets/p2/arrow.png" >
+        </div>
+
     </div>
 </template>
 
@@ -131,6 +135,16 @@ img {
     width: 80%;
     animation-duration: 10s;
 
+}
+
+.p3-arrow {
+    position: absolute;
+    display: none;
+    bottom: 5%;
+    left: 45%;
+    width: 10%;
+    animation-delay: 1s;
+    animation-duration: 1.25s;
 }
 
 
